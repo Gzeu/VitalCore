@@ -1,0 +1,30 @@
+&lt;Page x:Class=&quot;VitalCore.UI.Pages.OverviewPage&quot;
+      xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      xmlns:lc=&quot;clr-namespace:LiveChartsCore.SkiaSharpView.WinUI;assembly=LiveChartsCore.SkiaSharpView.WinUI&quot;
+      Background=&quot;{DynamicResource MicaAltBackgroundFillColorBase}&quot;&gt;
+
+  &lt;MicaBackdrop /&gt;
+
+  &lt;Grid Margin=&quot;20&quot;&gt;
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+      &lt;RowDefinition Height=&quot;*&quot;/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;!-- Mica Cards --&gt;
+    &lt;StackPanel Grid.Row=&quot;0&quot; Orientation=&quot;Horizontal&quot; Spacing=&quot;16&quot;&gt;
+      &lt;Border Background=&quot;{DynamicResource CardBackgroundFillColorSecondaryBrush}&quot; CornerRadius=&quot;12&quot; Width=&quot;200&quot;&gt;
+        &lt;MicaBackdrop /&gt;
+        &lt;StackPanel Padding=&quot;16&quot;&gt;
+          &lt;TextBlock Text=&quot;CPU&quot; FontSize=&quot;18&quot;/&gt;
+          &lt;ProgressBar Value=&quot;{Binding CpuUsage}&quot; /&gt;
+        &lt;/StackPanel&gt;
+      &lt;/Border&gt;
+      &lt;!-- GPU, RAM cards similar --&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;!-- LiveCharts --&gt;
+    &lt;lc:CartesianChart Grid.Row=&quot;1&quot; Series=&quot;{Binding CpuSeries}&quot; /&gt;
+  &lt;/Grid&gt;
+&lt;/Page&gt;
