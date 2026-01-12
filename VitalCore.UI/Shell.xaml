@@ -1,0 +1,27 @@
+&lt;Shell x:Class=&quot;VitalCore.UI.Shell&quot;
+      xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      xmlns:local=&quot;using:VitalCore.UI&quot;
+      xmlns:viewmodels=&quot;using:VitalCore.UI.ViewModels&quot;
+      xmlns:pages=&quot;using:VitalCore.UI.Pages&quot;
+      Background=&quot;{DynamicResource ApplicationPageBackgroundThemeBrush}&quot;
+      RequestedTheme=&quot;{x:Bind ViewModel.AccentTheme, Mode=OneWay}&quot;&gt;
+
+    &lt;Shell.DataContext&gt;
+        &lt;viewmodels:DashboardViewModel /&gt;
+    &lt;/Shell.DataContext&gt;
+
+    &lt;NavigationView x:Name=&quot;NavView&quot;
+                     MenuItemsSource=&quot;{Binding MenuItems}&quot;
+                     SelectedItem=&quot;{Binding SelectedNav}&quot;
+                     IsBackButtonVisible=&quot;Collapsed&quot;
+                     PaneDisplayMode=&quot;Top&quot;&gt;
+        &lt;NavigationView.MenuItemTemplate&gt;
+            &lt;DataTemplate x:DataType=&quot;models:NavItem&quot;&gt;
+                &lt;NavigationViewItem Icon=&quot;{x:Bind Icon}&quot; Content=&quot;{x:Bind Label}&quot; Tag=&quot;{x:Bind Tag}&quot;
+                                    SelectionChanged=&quot;NavView_SelectionChanged&quot;/&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/NavigationView.MenuItemTemplate&gt;
+        &lt;Frame x:Name=&quot;ContentFrame&quot;/&gt;
+    &lt;/NavigationView&gt;
+&lt;/Shell&gt;
