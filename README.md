@@ -1,43 +1,26 @@
-# ⚡ VitalCore (Premium System Monitor, Benchmark & Gaming HUD)
+# ⚡ VitalCore v1.0 - Premium Hardware Monitor & Gaming HUD
 
-**VitalCore** este un utilitar high-performance pentru Windows 10/11/12, construit cu **WinUI 3** și **.NET 9**. Transformă monitorizarea hardware în experiență premium, cu overlay gaming interactiv, benchmark-uri community și diagnostics avansați.
+**WinUI 3 / .NET 9 UWP app** pentru Windows 10/11/12. Monitorizare real-time, benchmark-uri, overlay gaming, S.M.A.R.T. diagnostics. Files-inspired UI (Mica dashboard tabs).[attached_file:1]
 
-## 🚀 Features Complete
-- **Gaming HUD (Overlay):** Fereastră semi-transparentă always-on-top, draggable, cu metrics CPU/GPU/RAM real-time în jocuri.
-- **Stress Test & Benchmark:** Multi-thread CPU (Pi), RAM bandwidth; comparații pe **global Leaderboard** via API.
-- **Pro Monitoring:** CPU/RAM/NVIDIA (NVAPI), charts LiveCharts2 high-freq.
-- **S.M.A.R.T. Health:** Diagnostics detaliate storage (HDD/SSD): status, predict failure, size, reasons via WMI.[SmartHealthService.cs](VitalCore.Services/SmartHealthService.cs)
-- **Advanced Settings:** Custom accent colors (ColorPicker), alert thresholds sliders (CPU/RAM/GPU), persistente LocalSettings.[AdvancedSettingsPage](VitalCore.UI/Pages/AdvancedSettingsPage.xaml)
-- **UI/UX Modern:** Mica Alt, Fluent 2.0, hover transitions, Mica backdrop.
-- **Export & More:** JSON snapshots, drag-drop window mgmt.
+## Features Complete
+- 🏠 **Dashboard Tabs**: Overview/Benchmark/SMART/HUD/Settings NavigationView.
+- 📊 **Live Metrics**: CPU/RAM/GPU/NVIDIA charts LiveCharts2 Mica cards.
+- ⚡ **Benchmark**: Pi CPU, RAM bandwidth + Leaderboard API.
+- 🎮 **HUD Overlay**: Draggable always-on-top în jocuri.
+- 💾 **S.M.A.R.T. Health**: WMI disk status/predict failure scan.
+- ⚙️ **Advanced Settings**: ColorPicker accent, sliders thresholds persistent.
+- 📱 **Assets**: Logo/splash ready (add PNGs).[Assets](VitalCore.UI/Assets/)
+- 💾 **Export**: JSON snapshots.
 
-## 📱 Visual Assets
-Structură pregătită în `VitalCore.UI/Assets/` cu specs pentru logo (1024x1024 cyan glassmorphism), splash (620x300), store icon (50x50).[Assets README](VitalCore.UI/Assets/README.md)
+![Dashboard Preview](https://via.placeholder.com/1200x600/0a0a0a/00BFFF?text=Mica+Dashboard) <!-- Replace -->
+![HUD](https://via.placeholder.com/800x400/0a0a0a/00BFFF?text=Gaming+HUD)
 
-## 🛠️ Tech Stack
-- **Framework:** Windows App SDK 1.8 (WinUI 3)
-- **.NET:** 9.0
-- **Charts:** LiveCharts2
-- **Interop:** WMI (S.M.A.R.T.), NVAPI, PerformanceCounters
-- **Storage:** LocalSettings, JSON export
-- **Windows:** AppWindow (overlay), Mica
+## Build
+1. Clone `git clone https://github.com/Gzeu/VitalCore`.
+2. VS 2022+ x64 Admin.
+3. Deploy MSIX sideloading.
 
-## 📥 Build & Run
-1. `git clone https://github.com/Gzeu/VitalCore.git`
-2. Deschide `VitalCore.sln` în VS 2022+ (x64).
-3. **Admin mode** pentru NVIDIA/WMI full access.
-4. Build → Deploy local.
+## Download v1.0
+[MSIX v1.0.0](https://github.com/Gzeu/VitalCore/releases/download/v1.0.0/VitalCore.msix) <!-- Attach -->
 
-![Overview](/VitalCore.UI/Assets/splash-preview.png) <!-- Placeholder -->
-![HUD Overlay] <!-- Add screenshots -->
-
-## 📅 Roadmap (Completed)
-- [x] MVP Monitoring/UI
-- [x] Benchmarks/Leaderboard
-- [x] Gaming HUD
-- [x] S.M.A.R.T. Health
-- [x] Advanced Settings
-- [ ] Store submission
-
----
-*Built by George Pricop (Gzeu), București, RO. Premium hardware insights.*
+MIT License. București, RO.
