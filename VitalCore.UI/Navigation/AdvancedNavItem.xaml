@@ -1,0 +1,8 @@
+<!-- Add to NavigationView.ItemsSource or MenuItems in Shell.xaml or MainWindow.xaml -->
+<NavigationViewItem
+    x:Name=&quot;AdvancedNavItem&quot;
+    Icon=&quot;Settings&quot;
+    Content=&quot;Advanced Settings&quot;
+    Tag=&quot;advanced&quot;
+    IsVisible=&quot;{x:Bind ViewModel.IsAdvancedEnabled, Mode=OneWay}&quot;
+    RequestedTheme=&quot;{x:Bind ViewModel.AccentColor, Mode=OneWay}&quot;/&gt;
