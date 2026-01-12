@@ -1,0 +1,13 @@
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current"&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;net9.0-windows&lt;/TargetFramework&gt;
+    &lt;RootNamespace&gt;VitalCore.Core&lt;/RootNamespace&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" /&gt;
+    &lt;PackageReference Include="NvAPIWrapper.Net" Version="0.8.1.101" /&gt;
+    &lt;PackageReference Include="System.Management" Version="9.0.0" /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;
