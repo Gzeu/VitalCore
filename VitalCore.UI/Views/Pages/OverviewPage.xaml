@@ -1,19 +1,102 @@
-&lt;Page x:Class="VitalCore.UI.Views.Pages.OverviewPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
-      xmlns:viewmodels="using:VitalCore.UI.ViewModels"&gt;
-    &lt;Page.DataContext&gt;
-        &lt;viewmodels:OverviewViewModel /&gt;
-    &lt;/Page.DataContext&gt;
-    &lt;Grid&gt;
-        &lt;StackPanel Spacing="20" Margin="20"&gt;
-            &lt;TextBlock Text="System Overview" FontSize="24" FontWeight="Bold" /&gt;
-            &lt;lvc:CartesianChart Series="{Binding CpuSeries}" 
-                                XAxes="{Binding XAxes}"
-                                YAxes="{Binding YAxes}" 
-                                Background="Transparent" /&gt;
-            &lt;ProgressBar Value="{Binding RamLoad}" Maximum="100" Width="300" /&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Grid&gt;
-&lt;/Page&gt;
+<Page
+    x:Class="VitalCore.UI.Views.Pages.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+    xmlns:viewmodels="using:VitalCore.UI.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Spacing="8" Margin="0,0,0,32">
+            <TextBlock Text="System Dashboard" Style="{StaticResource TitleLargeTextBlockStyle}" FontWeight="Bold" Foreground="{StaticResource AccentColorNeon}"/>
+            <TextBlock Text="Real-time hardware performance metrics" Style="{StaticResource BodyTextBlockStyle}" Opacity="0.6"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid ColumnSpacing="20" RowSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- CPU Main Chart Card -->
+                <Border Grid.Column="0" Grid.Row="0" 
+                        Background="{ThemeResource LayerFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1" CornerRadius="12" Padding="24">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,0,0,16">
+                            <FontIcon Glyph="&#xE950;" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="Cyan"/>
+                            <TextBlock Text="Processor Load (%)" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <lvc:CartesianChart Grid.Row="1" 
+                                            Series="{Binding CpuSeries}"
+                                            XAxes="{Binding XAxes}"
+                                            YAxes="{Binding YAxes}"
+                                            TooltipPosition="Hidden"
+                                            SyncContext="{Binding SyncContext}"/>
+                    </Grid>
+                </Border>
+
+                <!-- Quick Stats Side Card -->
+                <StackPanel Grid.Column="1" Grid.Row="0" Spacing="20">
+                    <Border Background="{ThemeResource LayerFillColorDefaultBrush}"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel Spacing="4">
+                            <TextBlock Text="CPU LOAD" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6"/>
+                            <TextBlock Text="{x:Bind ViewModel.CpuText, Mode=OneWay}" FontSize="36" FontWeight="Bold" Foreground="Cyan"/>
+                            <ProgressBar Value="{x:Bind ViewModel.CpuLoad, Mode=OneWay}" Maximum="100" Margin="0,12,0,0" Foreground="Cyan"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource LayerFillColorDefaultBrush}"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel Spacing="4">
+                            <TextBlock Text="RAM USAGE" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6"/>
+                            <TextBlock Text="{x:Bind ViewModel.RamLoadText, Mode=OneWay}" FontSize="36" FontWeight="Bold" Foreground="MediumPurple"/>
+                            <ProgressBar Value="{x:Bind ViewModel.RamLoad, Mode=OneWay}" Maximum="100" Margin="0,12,0,0" Foreground="MediumPurple"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- GPU Status Card -->
+                <Border Grid.Row="1" Grid.ColumnSpan="2" 
+                        Background="{ThemeResource LayerFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1" CornerRadius="12" Padding="24">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <FontIcon Glyph="&#xE7F4;" FontSize="32" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="OrangeRed"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="NVIDIA GPU" FontWeight="Bold"/>
+                                <TextBlock Text="{x:Bind ViewModel.GpuText, Mode=OneWay}" FontSize="24" Foreground="OrangeRed"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
