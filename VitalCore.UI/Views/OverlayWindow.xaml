@@ -1,0 +1,32 @@
+<Window
+    x:Class="VitalCore.UI.Views.OverlayWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}" CornerRadius="8" Margin="10">
+        <Border BorderBrush="{StaticResource AccentColorNeon}" BorderThickness="1" CornerRadius="8" Opacity="0.5"/>
+        
+        <StackPanel Padding="12" Spacing="4">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon Glyph="&#xE950;" FontSize="12" Foreground="Cyan" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                <TextBlock Text="CPU" FontSize="10" FontWeight="Bold" Opacity="0.8"/>
+                <TextBlock Text="{x:Bind ViewModel.CpuText, Mode=OneWay}" FontSize="12" FontWeight="Bold" Foreground="Cyan"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon Glyph="&#xE7F4;" FontSize="12" Foreground="OrangeRed" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                <TextBlock Text="GPU" FontSize="10" FontWeight="Bold" Opacity="0.8"/>
+                <TextBlock Text="{x:Bind ViewModel.GpuText, Mode=OneWay}" FontSize="12" FontWeight="Bold" Foreground="OrangeRed"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon Glyph="&#xE964;" FontSize="12" Foreground="MediumPurple" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                <TextBlock Text="RAM" FontSize="10" FontWeight="Bold" Opacity="0.8"/>
+                <TextBlock Text="{x:Bind ViewModel.RamLoadText, Mode=OneWay}" FontSize="12" FontWeight="Bold" Foreground="MediumPurple"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
