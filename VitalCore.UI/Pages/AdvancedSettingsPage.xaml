@@ -1,0 +1,26 @@
+&lt;Page x:Class=&quot;VitalCore.UI.Pages.AdvancedSettingsPage&quot;
+      xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      xmlns:controls=&quot;using:Microsoft.UI.Xaml.Controls&quot;
+      Background=&quot;{ThemeResource ApplicationPageBackgroundThemeBrush}&quot;&gt;
+
+    &lt;ScrollViewer&gt;
+        &lt;StackPanel Margin=&quot;20&quot; Spacing=&quot;20&quot;&gt;
+            &lt;TextBlock Text=&quot;S.M.A.R.T. Health&quot; Style=&quot;{StaticResource SubtitleTextBlockStyle}&quot;/&gt;
+            &lt;Button Content=&quot;Scan Storage&quot; Click=&quot;ScanStorage_Click&quot;/&gt;
+            &lt;ListView x:Name=&quot;DiskListView&quot; /&gt;
+
+            &lt;TextBlock Text=&quot;Advanced Settings&quot; Style=&quot;{StaticResource SubtitleTextBlockStyle}&quot;/&gt;
+            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                &lt;TextBlock Text=&quot;Accent Color:&quot; VerticalAlignment=&quot;Center&quot;/&gt;
+                &lt;controls:ColorPicker x:Name=&quot;AccentPicker&quot; ColorChanged=&quot;AccentPicker_ColorChanged&quot;/&gt;
+            &lt;/StackPanel&gt;
+            &lt;StackPanel&gt;
+                &lt;TextBlock Text=&quot;CPU Alert Threshold (%):&quot;/&gt;
+                &lt;Slider x:Name=&quot;CpuThresholdSlider&quot; Minimum=&quot;50&quot; Maximum=&quot;100&quot; Value=&quot;80&quot; ValueChanged=&quot;ThresholdSlider_ValueChanged&quot;/&gt;
+                &lt;TextBlock Text=&quot;{x:Bind CpuThresholdSlider.Value, Mode=OneWay, Converter={StaticResource NumberBoxFormatter}}%&quot;/&gt;
+            &lt;/StackPanel&gt;
+            &lt;!-- Add RAM, GPU thresholds similarly --&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollViewer&gt;
+&lt;/Page&gt;
