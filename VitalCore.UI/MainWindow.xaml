@@ -1,0 +1,43 @@
+&lt;Window
+    x:Class="VitalCore.UI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:VitalCore.UI.Views.Pages"
+    Title="VitalCore">
+
+    &lt;Grid&gt;
+        &lt;NavigationView x:Name="RootNavigation"
+                         PaneDisplayMode="Top"
+                         IsBackButtonVisible="Collapsed"
+                         Header="VitalCore System Monitor"
+                         Background="Transparent"
+                         MenuItemContainerStyle="{StaticResource NavigationViewItemContainerStyle}"&gt;
+            &lt;NavigationView.MenuItems&gt;
+                &lt;NavigationViewItem Content="Overview" Tag="Overview" Icon="Library" /&gt;
+                &lt;NavigationViewItem Content="CPU" Tag="CPU" Icon="SelectAll" /&gt;
+                &lt;NavigationViewItem Content="GPU" Tag="GPU" Icon="Video" /&gt;
+                &lt;NavigationViewItem Content="Sensors" Tag="Sensors" Icon="Target" /&gt;
+                &lt;NavigationViewItem Content="Benchmarks" Tag="Benchmarks" Icon="Memo" /&gt;
+            &lt;/NavigationView.MenuItems&gt;
+
+            &lt;Frame x:Name="ContentFrame" Margin="24" /&gt;
+            
+            &lt;NavigationView.FooterMenuItems&gt;
+                &lt;NavigationViewItem Content="Settings" Tag="Settings" Icon="Setting" /&gt;
+            &lt;/NavigationView.FooterMenuItems&gt;
+        &lt;/NavigationView&gt;
+
+        &lt;!-- Status Bar --&gt;
+        &lt;Border VerticalAlignment="Bottom" Height="28" 
+                Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" 
+                Opacity="0.8"
+                CornerRadius="0,0,8,8"&gt;
+            &lt;StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="12,0"&gt;
+                &lt;TextBlock x:Name="StatusUptime" Text="Uptime: 00:00:00" VerticalAlignment="Center" 
+                            FontSize="11" Margin="0,0,20,0" /&gt;
+                &lt;TextBlock x:Name="StatusRefresh" Text="Refresh: 1s" VerticalAlignment="Center" 
+                            FontSize="11" /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Border&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
